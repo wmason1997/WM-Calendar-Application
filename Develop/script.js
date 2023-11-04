@@ -6,6 +6,7 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 var dayDisplayEl = $('#currentDay');
+var timeBlockEls = $('.time-block');
 
 // gotta wrap in jQuery call
 
@@ -23,6 +24,33 @@ $(function () {
   // attribute of each time-block be used to conditionally add or remove the
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
+
+  function updateHours() {
+    var rightNowHour = parseInt(dayjs().format('H'));
+    for (var i = 0; i < timeBlockEls.length; i++) {
+      var id = timeBlockEls[i].id;
+      var blockHour = parseInt(id.substring(5)); //may have to add numeric
+
+      // before conditional
+      if (blockHour < rightNowHour) {
+        timeBlockEls[i].removeClass('present');
+        timeBlockEls[i].removeClass('future');
+        timeBlockEls[i].addClass('past');
+
+      } else if (blockHour === rightNowHour) { //equal conditional (same hour)
+        timeBlockEls[i].removeClass('past');
+        timeBlockEls[i].removeClass('future');
+        timeBlockEls[i].addClass('present');
+
+      } else { //after conditional
+        timeBlockEls[i].removeClass('present');
+        timeBlockEls[i].removeClass('past');
+        timeBlockEls[i].addClass('future');
+      }
+    }
+
+  }
+
   //
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
@@ -35,8 +63,6 @@ $(function () {
   }
 
   displayDate();
+  updateHours();
 
 });
-
-
-
