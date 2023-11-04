@@ -1,3 +1,7 @@
+// import dayjs from 'dayjs';
+// import advancedFormat from 'dayjs/plugin/advancedFormat.js'; dayjs.extend(advancedFormat);
+
+
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
@@ -28,15 +32,11 @@ $(function () {
   function displayDate() {
     var dayToday = dayjs().format('dddd, MMM D'); // have to import advancedFormat to add the o after the D
     dayDisplayEl.text(dayToday);
-
   }
+
+  displayDate();
+
 });
 
 
-function displayDate() {
-  var dayToday = dayjs().format('dddd, MMM D'); // have to import advancedFormat to add the o after the D and have to move inside
-  dayDisplayEl.text(dayToday);
 
-}
-
-displayDate();
