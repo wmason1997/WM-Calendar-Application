@@ -8,15 +8,15 @@
 var dayDisplayEl = $('#currentDay');
 var timeBlockEls = $('.time-block');
 
-var ninthHour = $('#hour-9');
-var tenthHour = $('#hour-10');
-var eleventhHour = $('#hour-11');
-var twelfthHour = $('#hour-12');
-var thirteenthHour = $('#hour-13');
-var fourteenthHour = $('#hour-14');
-var fifteenthHour = $('#hour-15');
-var sixteenthHour = $('#hour-16');
-var seventeenthHour = $('#hour-17');
+// var ninthHour = $('#hour-9');
+// var tenthHour = $('#hour-10');
+// var eleventhHour = $('#hour-11');
+// var twelfthHour = $('#hour-12');
+// var thirteenthHour = $('#hour-13');
+// var fourteenthHour = $('#hour-14');
+// var fifteenthHour = $('#hour-15');
+// var sixteenthHour = $('#hour-16');
+// var seventeenthHour = $('#hour-17');
 
 // gotta wrap in jQuery call
 
@@ -56,16 +56,27 @@ $(function () {
       }
     }
   }
-
-
-
   //
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
-  //
-  // TODO: Add code to display the current date in the header of the page.
+  
+  // function readToDosFromStorage(){
 
+  // }
+
+  // function saveToDosToStorage(TODOS) {
+
+  // }
+
+  function printToDos() {
+    // element.empty
+    // var TODOS = readToDosFromStorage();
+  }
+  
+
+
+  // TODO: Add code to display the current date in the header of the page.
   function displayDate() {
     var dayToday = dayjs().format('dddd, MMM D'); // have to import advancedFormat to add the o after the D
     dayDisplayEl.text(dayToday);
@@ -75,5 +86,6 @@ $(function () {
   setInterval(displayDate, 60000); // check every minute
   updateHours();
   setInterval(updateHours, 60000);
+  // printToDos();
 
 });
