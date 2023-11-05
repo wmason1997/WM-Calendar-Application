@@ -2,14 +2,9 @@
 //import advancedFormat from 'dayjs/plugin/advancedFormat.js'; 
 // dayjs.extend(advancedFormat);
 
-
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
+// Wrapped all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-// var dayDisplayEl = $('#currentDay'); // move inside the anonymous function
-// var timeBlockEls = $('.time-block'); // move insider the anonymous function
-
-
 $(document).ready(function() {
   var dayDisplayEl = $('#currentDay'); // move inside the anonymous function
   var timeBlockEls = $('.time-block'); // move insider the anonymous function
@@ -23,14 +18,15 @@ $(document).ready(function() {
 
   readToDosFromStorage(); // load the previously entered TODOs first when rendering the page
 
+  // Added a listener for click events on the save button.
   // Use jQuery to make all saveBtn class items call this saving to localStorage functionality
   $('.saveBtn').on('click', function() {
     var value = $(this).siblings('.description').val();
-    var hour = $(this).parent().attr('id');
+    var hour = $(this).parent().attr('id'); // the id in the containing time-block saved for later reference
     localStorage.setItem(hour,value);
   })
 
-  //
+
   // Added code to apply the past, present, or future class to each time block in updateHours() function
   function updateHours() {
     var rightNowHour = parseInt(dayjs().format('H'));
@@ -54,21 +50,19 @@ $(document).ready(function() {
     }
   }
 
-  //
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  
+
+  // Added code to get any user input that was saved in localStorage and set
+  // the values of the corresponding textarea elements.   
   // Puts the locally stored saved TODOS back on calendar upon page refresh 
   function readToDosFromStorage(){
     for(var i = 9; i<18; i++) {
-      $(`#hour-${i} .description`).val(localStorage.getItem(`hour-${i}`))
+      $(`#hour-${i} .description`).val(localStorage.getItem(`hour-${i}`)) // Using the id and template literals to properly reassign locally stored saved information
     }
   }
 
-  function saveToDosToStorage(TODOS) {
-    localStorage.setItem('savedTODOS', JSON.stringify(TODOS))
-  }
+  // function saveToDosToStorage(TODOS) {
+  //   localStorage.setItem('savedTODOS', JSON.stringify(TODOS))
+  // }
 
 
   // TODO: Add code to display the current date in the header of the page.
