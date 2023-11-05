@@ -8,6 +8,16 @@
 var dayDisplayEl = $('#currentDay');
 var timeBlockEls = $('.time-block');
 
+var ninthHour = $('#hour-9');
+var tenthHour = $('#hour-10');
+var eleventhHour = $('#hour-11');
+var twelfthHour = $('#hour-12');
+var thirteenthHour = $('#hour-13');
+var fourteenthHour = $('#hour-14');
+var fifteenthHour = $('#hour-15');
+var sixteenthHour = $('#hour-16');
+var seventeenthHour = $('#hour-17');
+
 // gotta wrap in jQuery call
 
 
@@ -33,23 +43,21 @@ $(function () {
 
       // before conditional
       if (blockHour < rightNowHour) {
-        timeBlockEls[i].removeClass('present');
-        timeBlockEls[i].removeClass('future');
-        timeBlockEls[i].addClass('past');
+        timeBlockEls[i].classList.remove('present', 'future');
+        timeBlockEls[i].classList.add('past');
 
       } else if (blockHour === rightNowHour) { //equal conditional (same hour)
-        timeBlockEls[i].removeClass('past');
-        timeBlockEls[i].removeClass('future');
-        timeBlockEls[i].addClass('present');
+        timeBlockEls[i].classList.remove('past', 'future');
+        timeBlockEls[i].classList.add('present');
 
       } else { //after conditional
-        timeBlockEls[i].removeClass('present');
-        timeBlockEls[i].removeClass('past');
-        timeBlockEls[i].addClass('future');
+        timeBlockEls[i].classList.remove('present', 'past');
+        timeBlockEls[i].classList.add('future');
       }
     }
-
   }
+
+
 
   //
   // TODO: Add code to get any user input that was saved in localStorage and set
@@ -57,12 +65,15 @@ $(function () {
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
+
   function displayDate() {
     var dayToday = dayjs().format('dddd, MMM D'); // have to import advancedFormat to add the o after the D
     dayDisplayEl.text(dayToday);
   }
 
   displayDate();
+  setInterval(displayDate, 60000); // check every minute
   updateHours();
+  setInterval(updateHours, 60000);
 
 });
