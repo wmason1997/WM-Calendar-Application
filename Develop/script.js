@@ -66,12 +66,6 @@ $(document).ready(function() {
     localStorage.setItem('savedTODOS', JSON.stringify(TODOS))
   }
 
-  function printToDos() {
-    // element.empty // maybe like a refresh page
-    var TODOS = readToDosFromStorage();
-  }
-  
-
 
   // TODO: Add code to display the current date in the header of the page.
   function displayDate() {
@@ -82,7 +76,6 @@ $(document).ready(function() {
   displayDate();
   setInterval(displayDate, 60000); // check every minute
   updateHours();
-  setInterval(updateHours, 60000);
-  // printToDos();
+  setInterval(updateHours, 60000); // check every minute
 
 });
