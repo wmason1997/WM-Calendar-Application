@@ -50,7 +50,6 @@ $(document).ready(function() {
     }
   }
 
-
   // Added code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements.   
   // Puts the locally stored saved TODOS back on calendar upon page refresh 
@@ -59,11 +58,6 @@ $(document).ready(function() {
       $(`#hour-${i} .description`).val(localStorage.getItem(`hour-${i}`)) // Using the id and template literals to properly reassign locally stored saved information
     }
   }
-
-  // function saveToDosToStorage(TODOS) {
-  //   localStorage.setItem('savedTODOS', JSON.stringify(TODOS))
-  // }
-
 
   // TODO: Add code to display the current date in the header of the page.
   function displayDate() {
