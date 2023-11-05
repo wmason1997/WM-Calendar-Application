@@ -9,18 +9,6 @@
 var dayDisplayEl = $('#currentDay'); // move inside the anonymous function
 var timeBlockEls = $('.time-block'); // move insider the anonymous function
 
-// var ninthHour = $('#hour-9');
-// var tenthHour = $('#hour-10');
-// var eleventhHour = $('#hour-11');
-// var twelfthHour = $('#hour-12');
-// var thirteenthHour = $('#hour-13');
-// var fourteenthHour = $('#hour-14');
-// var fifteenthHour = $('#hour-15');
-// var sixteenthHour = $('#hour-16');
-// var seventeenthHour = $('#hour-17');
-
-// gotta wrap in jQuery call
-
 
 $(document).ready(function() {
   // TODO: Add a listener for click events on the save button. This code should
@@ -29,18 +17,10 @@ $(document).ready(function() {
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
-  
-  // var saveButtons = document.querySelectorAll('.saveBtn');
 
-  // saveButtons.forEach(function (saveButton){
-  //   saveButton.addEventListener('click', function(){
-  //     localStorage.setItem(id, JSON.stringify(""))
-  //     saveToDosToStorage();
-  //   });
-  // });
+  readToDosFromStorage(); // load the previously entered TODOs first when rendering the page
 
-  readToDosFromStorage();
-
+  // Use jQuery to make all saveBtn class items call this saving to localStorage functionality
   $('.saveBtn').on('click', function() {
     var value = $(this).siblings('.description').val();
     var hour = $(this).parent().attr('id');
@@ -75,6 +55,7 @@ $(document).ready(function() {
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   
+  // Puts the locally stored saved TODOS back on calendar upon page refresh 
   function readToDosFromStorage(){
     for(var i = 9; i<18; i++) {
       $(`#hour-${i} .description`).val(localStorage.getItem(`hour-${i}`))
