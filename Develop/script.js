@@ -1,12 +1,13 @@
 // import dayjs from 'dayjs';
-// import advancedFormat from 'dayjs/plugin/advancedFormat.js'; dayjs.extend(advancedFormat);
+//import advancedFormat from 'dayjs/plugin/advancedFormat.js'; 
+// dayjs.extend(advancedFormat);
 
 
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-var dayDisplayEl = $('#currentDay');
-var timeBlockEls = $('.time-block');
+var dayDisplayEl = $('#currentDay'); // move inside the anonymous function
+var timeBlockEls = $('.time-block'); // move insider the anonymous function
 
 // var ninthHour = $('#hour-9');
 // var tenthHour = $('#hour-10');
@@ -21,20 +22,30 @@ var timeBlockEls = $('.time-block');
 // gotta wrap in jQuery call
 
 
-$(function () {
+$(document).ready(function() {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
-  var saveButtons = document.querySelectorAll('.saveBtn');
+  
+  // var saveButtons = document.querySelectorAll('.saveBtn');
 
-  saveButtons.forEach(function (saveButton){
-    saveButton.addEventListener('click', function(){
-      saveToDosToStorage();
-    });
-  });
+  // saveButtons.forEach(function (saveButton){
+  //   saveButton.addEventListener('click', function(){
+  //     localStorage.setItem(id, JSON.stringify(""))
+  //     saveToDosToStorage();
+  //   });
+  // });
+
+  readToDosFromStorage();
+
+  $('.saveBtn').on('click', function() {
+    var value = $(this).siblings('.description').val();
+    var hour = $(this).parent().attr('id');
+    localStorage.setItem(hour,value);
+  })
 
   //
   // Added code to apply the past, present, or future class to each time block in updateHours() function
@@ -65,7 +76,9 @@ $(function () {
   // attribute of each time-block be used to do this?
   
   function readToDosFromStorage(){
-
+    for(var i = 9; i<18; i++) {
+      $(`#hour-${i} .description`).val(localStorage.getItem(`hour-${i}`))
+    }
   }
 
   function saveToDosToStorage(TODOS) {
@@ -81,7 +94,7 @@ $(function () {
 
   // TODO: Add code to display the current date in the header of the page.
   function displayDate() {
-    var dayToday = dayjs().format('dddd, MMM D'); // have to import advancedFormat to add the o after the D
+    var dayToday = dayjs().format('dddd, MMM D'); // have to import advancedFormat to add the o after the D (momentJS could fix, try later, moment where dayjs is right now)
     dayDisplayEl.text(dayToday);
   }
 
