@@ -11,6 +11,8 @@ The starter code was from the Develop folder that was housed in the Challenge fo
 I had a tutoring session with Mila Hose on 11/05/2023. They helped me to write the event saving and retrieving with jQuery as opposed to Vanilla JS. They also helped me use template literals to target the specific time blocks with the relevant saved information.
 
 ## Screenshots ##
+![Screenshot](./Assets/images/WM-Daily-Planner-Top.png)
+![Screenshot](./Assets/images/WM-Daily-Planner-Bottom.png)
 
 
 ## Link to Deployed Application ##
