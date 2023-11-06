@@ -1,7 +1,7 @@
 # WM-Calendar-Application
 
 ## Description ##
-The goal of this project was to create an online website application that allowed the user to save events for each hour block within the standard 9 AM to 5 PM workday. The date is displayed at the top of the page with the help of the dayjs library and the hour blocks are color-coordinated for past (grey), present (red), and future (green) also with the help of the dayjs library.
+The goal of this project was to create an online website application that allowed the user to save events for each hour block within the standard 9 AM to 5 PM workday, essentially functioning as a daily planner. The date is displayed at the top of the page with the help of the dayjs library and the hour blocks are color-coordinated for past (grey), present (red), and future (green) also with the help of the dayjs library.
 
 The new tool that we were intended to utilize in this project was jQuery to dynamically update the HTML and CSS stylings that were applied. The project utilizes local storage to retain saved TODOs upon website page refresh.
 
