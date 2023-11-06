@@ -1,7 +1,3 @@
-// import dayjs from 'dayjs';
-//import advancedFormat from 'dayjs/plugin/advancedFormat.js'; 
-// dayjs.extend(advancedFormat);
-
 // Wrapped all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
@@ -25,7 +21,7 @@ $(document).ready(function() {
     var rightNowHour = parseInt(dayjs().format('H'));
     for (var i = 0; i < timeBlockEls.length; i++) {
       var id = timeBlockEls[i].id;
-      var blockHour = parseInt(id.substring(5)); //may have to add numeric
+      var blockHour = parseInt(id.substring(5)); //this excludes the "hour-" part of each different block and allows me to coerce the remaining part of a string into a number
 
       // before conditional
       if (blockHour < rightNowHour) {
@@ -54,7 +50,7 @@ $(document).ready(function() {
 
   // TODO: Add code to display the current date in the header of the page.
   function displayDate() {
-    var dayToday = dayjs().format('dddd, MMM D'); // have to import advancedFormat to add the o after the D (momentJS could fix, try later, moment where dayjs is right now)
+    var dayToday = dayjs().format('dddd, MMM D');
     dayDisplayEl.text(dayToday);
   }
 
